@@ -7,21 +7,24 @@ import {
 
 const MobileScreens = () => {
   return (
-    <div className="relative  w-full px-6">
-      <div className="glass-effect rounded-3xl p-8 relative overflow-hidden w-full">
-        {/* Section Header */}
+    // Use responsive padding: p-4 on small screens, p-8 on larger screens
+    <div className="relative w-full px-4 sm:px-6"> 
+      <div className="glass-effect rounded-3xl p-4 sm:p-8 relative overflow-hidden w-full">
+        {/* Section Header with responsive text */}
         <div className="text-center mb-12">
-          <h3 className="text-4xl font-black mb-4">Mobile App Experience</h3>
-          <p style={{ color: "var(--color-text-secondary)" }} className="text-xl">
+          <h3 className="text-3xl md:text-4xl font-black mb-4">Mobile App Experience</h3>
+          <p style={{ color: "var(--color-text-secondary)" }} className="text-lg md:text-xl">
             Beautiful, intuitive, and powerful - all in your pocket
           </p>
         </div>
 
-        {/* Mobile Screens Grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+        {/* Mobile Screens Grid: 1-col on mobile, 2-col on tablet, 4-col on desktop */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          
           {/* Screen 1 - Dashboard */}
           <div className="flex justify-center">
-            <div className="w-56 h-[28rem] rounded-[2.5rem] border-8 border-gray-800 bg-gray-900 overflow-hidden shadow-2xl">
+            {/* Use w-full to fill the grid column, max-w-xs to cap size, and mx-auto to center */}
+            <div className="w-full max-w-xs mx-auto h-[28rem] rounded-[2.5rem] border-8 border-gray-800 bg-gray-900 overflow-hidden shadow-2xl">
               {/* Status Bar */}
               <div className="h-7 bg-gray-800 flex items-center justify-between px-5 pt-1">
                 <span className="text-white text-sm">9:41</span>
@@ -101,7 +104,7 @@ const MobileScreens = () => {
 
           {/* Screen 2 - Transactions */}
           <div className="flex justify-center">
-            <div className="w-56 h-[28rem] rounded-[2.5rem] border-8 border-gray-800 bg-gray-900 overflow-hidden shadow-2xl">
+            <div className="w-full max-w-xs mx-auto h-[28rem] rounded-[2.5rem] border-8 border-gray-800 bg-gray-900 overflow-hidden shadow-2xl">
               {/* Status Bar */}
               <div className="h-7 bg-gray-800 flex items-center justify-between px-5 pt-1">
                 <span className="text-white text-sm">9:41</span>
@@ -176,7 +179,7 @@ const MobileScreens = () => {
 
           {/* Screen 3 - Investments */}
           <div className="flex justify-center">
-            <div className="w-56 h-[28rem] rounded-[2.5rem] border-8 border-gray-800 bg-gray-900 overflow-hidden shadow-2xl">
+            <div className="w-full max-w-xs mx-auto h-[28rem] rounded-[2.5rem] border-8 border-gray-800 bg-gray-900 overflow-hidden shadow-2xl">
               {/* Status Bar */}
               <div className="h-7 bg-gray-800 flex items-center justify-between px-5 pt-1">
                 <span className="text-white text-sm">9:41</span>
@@ -226,7 +229,7 @@ const MobileScreens = () => {
 
           {/* Screen 4 - Analytics */}
           <div className="flex justify-center">
-            <div className="w-56 h-[28rem] rounded-[2.5rem] border-8 border-gray-800 bg-gray-900 overflow-hidden shadow-2xl">
+            <div className="w-full max-w-xs mx-auto h-[28rem] rounded-[2.5rem] border-8 border-gray-800 bg-gray-900 overflow-hidden shadow-2xl">
               {/* Status Bar */}
               <div className="h-7 bg-gray-800 flex items-center justify-between px-5 pt-1">
                 <span className="text-white text-sm">9:41</span>
@@ -280,29 +283,29 @@ const MobileScreens = () => {
           </div>
         </div>
 
-        {/* Screen Labels */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 mt-8 text-center">
+        {/* Screen Labels: Also 1-col on mobile, 2-col on tablet, 4-col on desktop */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-8 text-center">
           <div>
-            <h4 className="font-bold text-xl mb-2">Dashboard</h4>
-            <p style={{ color: "var(--color-text-secondary)" }} className="text-base">
+            <h4 className="font-bold text-lg md:text-xl mb-2">Dashboard</h4>
+            <p style={{ color: "var(--color-text-secondary)" }} className="text-sm md:text-base">
               Overview & Balance
             </p>
           </div>
           <div>
-            <h4 className="font-bold text-xl mb-2">Transactions</h4>
-            <p style={{ color: "var(--color-text-secondary)" }} className="text-base">
+            <h4 className="font-bold text-lg md:text-xl mb-2">Transactions</h4>
+            <p style={{ color: "var(--color-text-secondary)" }} className="text-sm md:text-base">
               Track Spending
             </p>
           </div>
           <div>
-            <h4 className="font-bold text-xl mb-2">Investments</h4>
-            <p style={{ color: "var(--color-text-secondary)" }} className="text-base">
+            <h4 className="font-bold text-lg md:text-xl mb-2">Investments</h4>
+            <p style={{ color: "var(--color-text-secondary)" }} className="text-sm md:text-base">
               Portfolio Growth
             </p>
           </div>
           <div>
-            <h4 className="font-bold text-xl mb-2">Analytics</h4>
-            <p style={{ color: "var(--color-text-secondary)" }} className="text-base">
+            <h4 className="font-bold text-lg md:text-xl mb-2">Analytics</h4>
+            <p style={{ color: "var(--color-text-secondary)" }} className="text-sm md:text-base">
               AI Insights
             </p>
           </div>
@@ -312,5 +315,4 @@ const MobileScreens = () => {
   );
 };
 
-// Make sure this export is at the end
 export default MobileScreens;
