@@ -111,8 +111,8 @@ const App = () => {
       <ServicesSection sectionRef={sectionRefs.services} />
       <FeaturesSection sectionRef={sectionRefs.features} />
       {/* <PricingSection sectionRef={sectionRefs.pricing} />
-      <TestimonialsSection sectionRef={sectionRefs.testimonials} /> */}
-      <ContactSection sectionRef={sectionRefs.contact} />
+      <TestimonialsSection sectionRef={sectionRefs.testimonials} /> 
+      <ContactSection sectionRef={sectionRefs.contact} /> */}
       
       <Footer />
     </div>
