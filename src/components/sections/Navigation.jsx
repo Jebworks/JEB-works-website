@@ -8,7 +8,7 @@ const Navigation = ({
   scrollToSection, 
   scrollY 
 }) => {
-  const navItems = ['Home', 'Mission', 'Services', 'Features', 'Pricing', 'Contact'];
+  const navItems = ['Home', 'Mission', 'Services', 'Features'];
 
   return (
     <nav className={`fixed top-0 w-full z-50 transition-all duration-500 ${
