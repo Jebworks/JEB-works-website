@@ -7,13 +7,14 @@ import {
   Star,
   IndianRupee,
   ChevronDown,
-  Apple,
+  Apple, // Re-added
   Download,
   Smartphone,
   Shield,
   Zap,
   BarChart3,
-  ShoppingBag
+  ShoppingBag, // Re-added
+  // Rocket, // Removed
 } from 'lucide-react';
 
 const HeroSection = ({ sectionRef, counter, scrollToSection }) => {
@@ -64,7 +65,7 @@ const HeroSection = ({ sectionRef, counter, scrollToSection }) => {
             animationDelay: "0.2s",
           }}
         >
-        Jeb Works makes personal finance simple, smart, and rewarding. Track your expenses, optimise your savings,
+         Jeb Works makes personal finance simple, smart, and rewarding. Track your expenses, optimise your savings,
          plan investments, and get AI-driven insights — all from one intuitive platform.
         </p>
 
@@ -85,50 +86,37 @@ const HeroSection = ({ sectionRef, counter, scrollToSection }) => {
           className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16 animate-slide-up"
           style={{ animationDelay: "0.4s" }}
         >
-          {/* Google Play Store */}
+          {/* Google Play Store -> Launching Soon */}
           <a
             href="#"
             className="group flex items-center gap-4 px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl relative overflow-hidden glass-effect border border-white/20"
           >
-            <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-green-500">
-              <ShoppingBag size={24} className="text-white" />
+            <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-green-500"> {/* Changed color back */}
+              <ShoppingBag size={24} className="text-white" /> {/* Changed icon back */}
             </div>
             <div className="text-left">
-              <div className="text-xs text-gray-400">GET IT ON</div>
-              <div className="text-white font-bold">Google Play</div>
+              <div className="text-xs text-gray-400">GET READY FOR</div>
+              <div className="text-white font-bold">Launching Soon</div>
             </div>
             <div className="absolute inset-0 shimmer opacity-0 group-hover:opacity-100 transition-opacity" />
           </a>
 
-          {/* Apple App Store */}
+          {/* Apple App Store -> Launching Soon */}
           <a
             href="#"
             className="group flex items-center gap-4 px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl relative overflow-hidden glass-effect border border-white/20"
           >
-            <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-black">
-              <Apple size={24} className="text-white" />
+            <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-black"> {/* Changed color back */}
+              <Apple size={24} className="text-white" /> {/* Changed icon back */}
             </div>
             <div className="text-left">
-              <div className="text-xs text-gray-400">Download on the</div>
-              <div className="text-white font-bold">App Store</div>
+              <div className="text-xs text-gray-400">PREPARE FOR</div>
+              <div className="text-white font-bold">Launching Soon</div>
             </div>
             <div className="absolute inset-0 shimmer opacity-0 group-hover:opacity-100 transition-opacity" />
           </a>
 
-          {/* Direct APK Download */}
-          <a
-            href="#"
-            className="group flex items-center gap-4 px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl relative overflow-hidden"
-            style={{
-              background: "var(--gradient-primary)",
-              boxShadow: "0 20px 60px rgba(139, 92, 246, 0.4)",
-            }}
-          >
-            <Download size={24} className="text-white" />
-            <span className="text-white font-bold">Download APK</span>
-            <div className="absolute inset-0 shimmer opacity-0 group-hover:opacity-100 transition-opacity" />
-          </a>
-        </div>
+      </div>
 
         {/* Animated Stats */}
         <div
