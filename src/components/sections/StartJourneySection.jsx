@@ -39,7 +39,7 @@ const StartJourneySection = ({ sectionRef, scrollToSection }) => {
             >
               <span className="relative z-10 flex items-center gap-2 text-white">
                 <Sparkles size={20} />
-                Sign Up for Free
+                Coming Soon
                 <ArrowRight className="group-hover:translate-x-1 transition-transform" />
               </span>
               <div className="absolute inset-0 shimmer" />
