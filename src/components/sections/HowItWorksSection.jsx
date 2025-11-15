@@ -1,26 +1,30 @@
 import React from 'react';
-import { Link, BarChart3, Brain } from 'lucide-react'; // Added icons
+// Updated icons to be more specific
+import { Link, DatabaseZap, PieChart, Calculator } from 'lucide-react'; 
 
 const HowItWorksSection = ({ sectionRef }) => {
   
+  // Updated steps based on your new plan
   const steps = [
     {
-      // number: "01", // Replaced with icon
       icon: Link,
-      title: "Link Your Accounts",
-      description: "Securely connect your bank accounts, credit cards, and wallets in one place using our RBI-compliant integration."
+      title: "1. Link Your Accounts",
+      description: "Securely connect your bank accounts. Our API automatically fetches and syncs your transactions in real-time."
     },
     {
-      // number: "02", // Replaced with icon
-      icon: BarChart3,
-      title: "Track Your Finances",
-      description: "Our AI automatically categorizes your spending and tracks your cash flow in real-time so you know where every rupee goes."
+      icon: DatabaseZap, // Icon for auto-fetching and manual entry
+      title: "2. Verify & Add",
+      description: "Our AI auto-categorizes 99% of expenses. For any cash spending, you can manually add a transaction to the right category."
     },
     {
-      // number: "03", // Replaced with icon
-      icon: Brain,
-      title: "Get Smart Insights",
-      description: "Receive personalized advice, saving tips, and investment opportunities designed to help you grow your wealth faster."
+      icon: PieChart, // Icon for analytics
+      title: "3. Analyze Your Habits",
+      description: "Understand your spending with our powerful analytics. See exactly where your money goes, find trends, and plan your budget."
+    },
+    {
+      icon: Calculator, // Icon for planning
+      title: "4. Get a Clear Overview",
+      description: "Receive a complete overview of your credit and debit plans. Make informed decisions to manage debt and grow your savings."
     }
   ];
 
@@ -29,7 +33,7 @@ const HowItWorksSection = ({ sectionRef }) => {
       id="howitworks"
       ref={sectionRef}
       className="py-32 px-6 relative"
-      style={{ backgroundColor: 'var(--color-surface)' }} // Use a dark (but not black) background
+      style={{ backgroundColor: 'var(--color-surface)' }} // Dark theme
     >
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
@@ -41,32 +45,32 @@ const HowItWorksSection = ({ sectionRef }) => {
             How It Works
           </span>
           <h2 className="text-5xl md:text-6xl font-black mt-4 mb-6">
-            Get Started in <span className="text-gradient">3 Simple Steps</span>
+            Your Financial Journey <span className="text-gradient">Simplified</span>
           </h2>
           <p
             className="text-xl max-w-3xl mx-auto"
             style={{ color: "var(--color-text-secondary)" }}
           >
-            It's as easy as one, two, three. Get your complete financial picture in minutes.
+            Get a complete 360-degree view of your finances in just a few minutes.
           </p>
         </div>
 
-        {/* Steps Grid */}
-        <div className="grid md:grid-cols-3 gap-8 stagger-animation">
+        {/* Updated to a 4-column grid for the new steps */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 stagger-animation">
           {steps.map((step, idx) => (
             <div
               key={idx}
               className="group card-shine glass-effect p-8 rounded-3xl hover-lift relative overflow-hidden animate-on-scroll"
             >
               <div className="relative z-10">
-                {/* --- Icon Div Added (replaces number) --- */}
+                {/* Icon Div */}
                 <div
                   className="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 floating-icon"
                   style={{ background: "var(--gradient-primary)" }}
                 >
                   <step.icon size={32} className="text-white" />
                 </div>
-                {/* --- End Icon Div --- */}
+                {/* End Icon Div */}
                 
                 <h3 className="text-2xl font-bold mb-4" style={{ color: "var(--color-text-primary)" }}>
                   {step.title}
