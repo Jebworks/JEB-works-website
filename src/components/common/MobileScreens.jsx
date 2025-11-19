@@ -194,15 +194,12 @@ const MobileScreens = ({ sectionRef }) => {
               style={{ backgroundColor: activeScreen.color }}
             />
 
-            {/* Phone Frame - Reduced Dimensions 
-               Height reduced from 580/640 to 480/560
-               Width reduced from 280/320 to 240/280
-            */}
+            {/* Phone Frame - Changed border color to dark black */}
             <div 
-              className="relative w-[240px] md:w-[280px] h-[480px] md:h-[560px] bg-background rounded-[2.5rem] shadow-2xl border-[6px] border-foreground/10 z-10 overflow-hidden transition-all duration-500 hover:scale-[1.02]"
+              className="relative w-[240px] md:w-[280px] h-[480px] md:h-[560px] bg-background rounded-[2.5rem] shadow-2xl border-[6px] border-black z-10 overflow-hidden transition-all duration-500 hover:scale-[1.02]"
             >
               {/* Notch */}
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-6 bg-foreground/10 rounded-b-xl z-20 backdrop-blur-md" />
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-6 bg-black/50 rounded-b-xl z-20 backdrop-blur-md" />
 
               {/* Screen Image Area */}
               <div className="w-full h-full bg-muted relative">
