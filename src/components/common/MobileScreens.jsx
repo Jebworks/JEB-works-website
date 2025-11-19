@@ -7,7 +7,7 @@ import {
   ChevronRight,
   ChevronLeft,
   ArrowRight,
-  Smartphone // Added for the header badge
+  Smartphone
 } from 'lucide-react';
 
 /**
@@ -85,37 +85,31 @@ const MobileScreens = ({ sectionRef }) => {
     <section
       id="mobile"
       ref={sectionRef}
-      // Reduced padding for a more compact section height
       className="relative py-16 md:py-24 overflow-hidden bg-muted/30"
       style={{ fontFamily: 'var(--font-sans)' }}
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header - Updated to match Start Journey Section styling */}
+        {/* Section Header */}
         <div className="text-center mb-16 animate-on-scroll">
-          
           {/* Pill Badge */}
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-semibold tracking-wide uppercase mb-6">
             <Smartphone size={14} />
             <span>Mobile Experience</span>
           </div>
 
-          {/* Headline - Increased Size */}
+          {/* Headline */}
           <h2 className="text-4xl md:text-6xl font-bold tracking-tight text-foreground mb-6 leading-tight">
             Powerful Features in{' '}
             <span className="text-gradient-primary">Your Pocket</span>
           </h2>
         </div>
 
-        {/* * === Split Layout Content ===
-         * Reduced gap from 12 to 8 (lg:gap-10) to bring content closer
-         */}
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-10 items-center">
           
           {/* --- LEFT COLUMN: Content --- */}
           <div className="order-2 lg:order-1 flex flex-col justify-center lg:pr-8">
             
-            {/* Animated Text Container */}
             <div key={activeTab} className="animate-fade-in-up">
               <div 
                 className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm font-medium mb-5"
@@ -194,12 +188,16 @@ const MobileScreens = ({ sectionRef }) => {
               style={{ backgroundColor: activeScreen.color }}
             />
 
-            {/* Phone Frame - Changed border color to dark black */}
+            {/* Phone Frame */}
             <div 
-              className="relative w-[240px] md:w-[280px] h-[480px] md:h-[560px] bg-background rounded-[2.5rem] shadow-2xl border-[6px] border-black z-10 overflow-hidden transition-all duration-500 hover:scale-[1.02]"
+              className="relative w-[240px] md:w-[280px] h-[480px] md:h-[560px] bg-background rounded-[2.5rem] shadow-2xl border-[6px] z-10 overflow-hidden transition-all duration-500 hover:scale-[1.02]"
+              style={{ borderColor: 'rgb(113, 113, 122)' }}
             >
-              {/* Notch */}
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-6 bg-black/50 rounded-b-xl z-20 backdrop-blur-md" />
+              {/* Notch - Matched to border color for consistent bezel look */}
+              <div 
+                className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-6 rounded-b-xl z-20 backdrop-blur-md" 
+                style={{ backgroundColor: 'rgb(113, 113, 122)' }}
+              />
 
               {/* Screen Image Area */}
               <div className="w-full h-full bg-muted relative">
@@ -219,7 +217,7 @@ const MobileScreens = ({ sectionRef }) => {
               </div>
             </div>
             
-            {/* Floating badge decoration - Repositioned closer */}
+            {/* Floating badge decoration */}
             <div 
                className="absolute bottom-16 -right-2 md:-right-6 bg-card p-3 rounded-xl shadow-lg border border-border animate-float hidden md:block"
                style={{ animationDelay: '1s' }}
