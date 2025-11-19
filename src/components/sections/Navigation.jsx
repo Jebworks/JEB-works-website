@@ -50,7 +50,8 @@ const Navigation = ({
           </div>
 
           {/* === Desktop Navigation === */}
-          <div className="hidden lg:flex items-center gap-8">
+          {/* Added h-full so buttons span the full height for bottom-border alignment */}
+          <div className="hidden lg:flex items-center gap-8 h-full">
             {navItems.map((item) => {
               const targetId = getSectionId(item);
               const isActive = activeSection === targetId;
@@ -59,19 +60,23 @@ const Navigation = ({
                 <button
                   key={item}
                   onClick={() => scrollToSection(targetId)}
-                  className={`relative group transition-colors duration-300 text-sm font-medium flex items-center gap-1.5 ${
+                  // Added h-full and relative positioning for the underline
+                  className={`relative h-full px-1 text-sm font-medium transition-colors duration-300 flex items-center ${
                     isActive
-                      ? 'text-primary'
+                      ? 'text-[hsl(18,60%,45%)] font-semibold' // Active Text Color (Clay)
                       : 'text-gray-600 hover:text-gray-900'
                   }`}
                 >
                   {item}
+                  
+                  {/* === The Primary Color Underline === */}
                   {isActive && (
-                    <div
-                      className="w-1.5 h-1.5 rounded-full bg-primary"
+                    <span
+                      className="absolute bottom-7 left-0 w-full h-[3px] rounded-t-full"
                       style={{
-                        animation: 'pulse-glow 2.5s ease-in-out infinite',
-                        boxShadow: '0 0 15px hsl(var(--primary) / 0.3)',
+                        background: 'hsl(18, 60%, 45%)', // Solid Primary Color
+                        boxShadow: '0 -2px 10px hsl(18 60% 45% / 0.3)', // Subtle glow upwards
+                        transition: 'all 0.3s ease-in-out',
                       }}
                     />
                   )}
@@ -82,7 +87,6 @@ const Navigation = ({
 
           {/* === Desktop CTA & Mobile Toggle === */}
           <div className="hidden lg:flex items-center gap-4">
-
             <button
               onClick={() => { /* Handle Get Started */ }}
               className="px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg text-white"
@@ -134,7 +138,7 @@ const Navigation = ({
                   }}
                   className={`block w-full text-left py-3 px-4 rounded-[var(--radius-sm)] transition-colors-fast flex items-center justify-between text-base font-medium ${
                     isActive
-                      ? 'bg-gray-100 text-primary'
+                      ? 'bg-primary/10 text-[hsl(18,60%,45%)] font-semibold' // Active Mobile Style
                       : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'
                   }`}
                 >
