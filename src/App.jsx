@@ -16,6 +16,7 @@ import MobileScreens from "./components/common/MobileScreens";
 import SecuritySection from "./components/sections/SecuritySection";
 import HowItWorksSection from "./components/sections/HowItWorksSection";
 import StartJourneySection from "./components/sections/StartJourneySection";
+import AboutSection from "./components/sections/AboutSection";
 
 const App = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -25,7 +26,8 @@ const App = () => {
 
   const sectionRefs = {
     home: useRef(null),
-    mobilescreens: useRef(null), // Added this ref
+    mobilescreens: useRef(null),
+    about: useRef(null), 
     mission: useRef(null),
     services: useRef(null),
     features: useRef(null),
@@ -44,6 +46,7 @@ const App = () => {
       // --- FIX: This array now includes all sections on the page ---
       const sections = [
         "home",
+        "about",
         "mobilescreens",
         "mission",
         "services",
@@ -136,7 +139,7 @@ const App = () => {
         counter={counter}
         scrollToSection={scrollToSection}
       />
-
+      <AboutSection sectionRef={sectionRefs.about} />
       <MobileScreens sectionRef={sectionRefs.mobilescreens} />
       <MissionSection sectionRef={sectionRefs.mission} />
       <ServicesSection sectionRef={sectionRefs.services} />
