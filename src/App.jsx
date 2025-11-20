@@ -139,12 +139,12 @@ const App = () => {
         counter={counter}
         scrollToSection={scrollToSection}
       />
-      <AboutSection sectionRef={sectionRefs.about} />
       <MobileScreens sectionRef={sectionRefs.mobilescreens} />
       <MissionSection sectionRef={sectionRefs.mission} />
       <ServicesSection sectionRef={sectionRefs.services} />
       <FeaturesSection sectionRef={sectionRefs.features} />
-      <SecuritySection sectionRef={sectionRefs.security} />
+      {/* <SecuritySection sectionRef={sectionRefs.security} /> */}
+      <AboutSection sectionRef={sectionRefs.about} />
       <HowItWorksSection sectionRef={sectionRefs.howitworks} />
       
       {/* --- Uncommented these sections --- */}
