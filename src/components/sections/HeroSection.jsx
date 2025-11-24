@@ -5,30 +5,16 @@ const PrimaryButton = ({ children, className = '', ...props }) => (
   <button
     className={`group relative inline-flex items-center gap-2.5 px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-300 ${className}`}
     style={{
-      background: 'hsl(18, 60%, 45%)', // Solid Primary Clay Color (No Gradient)
+      background: 'hsl(18, 60%, 45%)',
       color: 'hsl(36, 33%, 98%)',
       transform: 'translateY(0)',
-      boxShadow: '0 4px 20px -5px hsl(18 60% 45% / 0.4)', // Added matching colored shadow
+      boxShadow: '0 4px 20px -5px hsl(18 60% 45% / 0.4)',
     }}
     onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-4px)'}
     onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}
     {...props}
   >
     <span className="relative z-10">{children}</span>
-  </button>
-);
-
-const SecondaryButton = ({ children, className = '', ...props }) => (
-  <button
-    className={`group inline-flex items-center gap-2.5 px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-300 ${className}`}
-    style={{
-      background: 'hsl(42, 55%, 55%)',
-      color: 'hsl(24, 15%, 18%)',
-    }}
-    {...props}
-  >
-    <PlayCircle size={16} className="transition-colors duration-300" />
-    <span>{children}</span>
   </button>
 );
 
@@ -50,15 +36,16 @@ const HeroSection = ({ sectionRef, counter, scrollToSection }) => {
         borderBottom: '1px solid hsl(36, 15%, 80%)',
       }}
     >
-      {/* Premium Gradient Background */}
+      {/* === 1. Background Layer === */}
       <div 
         className="absolute inset-0 z-0"
         style={{
+          // Dark charcoal to clay gradient
           background: 'linear-gradient(135deg, hsl(24, 20%, 12%) 0%, hsl(18, 50%, 20%) 100%)',
         }}
       />
 
-      {/* Animated gradient orbs */}
+      {/* === 2. Animated Orbs (Fixed Opacity for Mobile) === */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         <div 
           className="absolute"
@@ -68,8 +55,9 @@ const HeroSection = ({ sectionRef, counter, scrollToSection }) => {
             width: '600px',
             height: '600px',
             borderRadius: '50%',
-            opacity: 0.3,
-            filter: 'blur(60px)',
+            // Reduced opacity slightly for better text contrast
+            opacity: 0.2, 
+            filter: 'blur(80px)',
             background: 'radial-gradient(circle, hsl(42, 55%, 65%) 0%, transparent 70%)',
             animation: 'pulse-subtle 3s ease-in-out infinite',
           }}
@@ -83,31 +71,15 @@ const HeroSection = ({ sectionRef, counter, scrollToSection }) => {
             width: '500px',
             height: '500px',
             borderRadius: '50%',
-            opacity: 0.25,
-            filter: 'blur(60px)',
+            opacity: 0.15,
+            filter: 'blur(80px)',
             background: 'radial-gradient(circle, hsl(160, 30%, 50%) 0%, transparent 70%)',
             animation: 'float 6s ease-in-out infinite',
           }}
         />
-        
-        <div 
-          className="absolute"
-          style={{
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            width: '400px',
-            height: '400px',
-            borderRadius: '50%',
-            opacity: 0.2,
-            filter: 'blur(60px)',
-            background: 'radial-gradient(circle, hsl(18, 60%, 55%) 0%, transparent 70%)',
-            animation: 'pulse-subtle 3s ease-in-out infinite 2s',
-          }}
-        />
       </div>
 
-      {/* Noise texture overlay */}
+      {/* Noise texture */}
       <div 
         className="absolute inset-0 z-0"
         style={{
@@ -116,16 +88,17 @@ const HeroSection = ({ sectionRef, counter, scrollToSection }) => {
         }}
       />
 
-      {/* Main content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-12">
+      {/* === 3. Main Content === */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-12 md:pt-12">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           
-          {/* LEFT COLUMN: Text Content */}
+          {/* --- Text Content --- */}
           <div className="text-left order-2 lg:order-1">
             <h1
-              className="text-5xl md:text-7xl font-bold tracking-tight leading-tight"
+              // Adjusted sizes: text-4xl for mobile, text-7xl for desktop
+              className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight leading-tight"
               style={{ 
-                textShadow: '0 2px 10px rgba(0,0,0,0.1)',
+                textShadow: '0 4px 15px rgba(0,0,0,0.5)', // Stronger shadow for readability
                 animation: 'fade-in-up 0.8s ease-out forwards',
               }}
             >
@@ -138,6 +111,8 @@ const HeroSection = ({ sectionRef, counter, scrollToSection }) => {
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                   backgroundClip: 'text',
+                  // Fallback shadow if gradient clips weirdly on some mobile browsers
+                  filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.3))' 
                 }}
               >
                 Your Money
@@ -147,7 +122,8 @@ const HeroSection = ({ sectionRef, counter, scrollToSection }) => {
             <p
               className="mt-6 text-lg md:text-xl max-w-lg"
               style={{ 
-                color: 'rgba(250, 248, 245, 0.9)',
+                color: 'rgba(255, 255, 255, 0.9)', // Pure white for better mobile contrast
+                textShadow: '0 1px 2px rgba(0,0,0,0.5)', // Shadow for legibility
                 animation: 'fade-in-up 0.8s ease-out 0.1s forwards',
                 opacity: 0,
               }}
@@ -168,17 +144,19 @@ const HeroSection = ({ sectionRef, counter, scrollToSection }) => {
               {features.map((feature, idx) => (
                 <div
                   key={idx}
-                  className="flex items-center gap-2 px-3 py-1.5 rounded-full"
+                  className="flex items-center gap-2 px-3 py-2 rounded-full"
                   style={{
-                    background: 'rgba(255, 255, 255, 0.15)',
-                    backdropFilter: 'blur(10px)',
-                    border: '1px solid rgba(255, 255, 255, 0.2)',
+                    // CHANGED: Darker background for better contrast on mobile
+                    background: 'rgba(0, 0, 0, 0.3)', 
+                    backdropFilter: 'blur(8px)',
+                    border: '1px solid rgba(255, 255, 255, 0.15)',
+                    boxShadow: '0 2px 10px rgba(0,0,0,0.1)'
                   }}
                 >
-                  <feature.icon size={14} style={{ color: 'hsl(36, 33%, 99%)' }} />
+                  <feature.icon size={16} style={{ color: 'hsl(42, 100%, 75%)' }} />
                   <span
                     className="text-sm font-medium"
-                    style={{ color: 'hsl(36, 33%, 96%)' }}
+                    style={{ color: 'hsl(36, 33%, 98%)', textShadow: '0 1px 2px rgba(0,0,0,0.8)' }}
                   >
                     {feature.text}
                   </span>
@@ -197,55 +175,51 @@ const HeroSection = ({ sectionRef, counter, scrollToSection }) => {
               <PrimaryButton onClick={() => { /* Handle Get Started */ }}>
                Coming Soon
               </PrimaryButton>
-             
             </div>
           </div>
 
-          {/* RIGHT COLUMN: Image Placeholder */}
+          {/* --- Image Content --- */}
           <div className="relative order-1 lg:order-2 flex justify-center lg:justify-end animate-on-scroll">
-            
-            {/* UPDATED WRAPPER: Adds a centered flex container for image and background */}
             <div className="relative flex items-center justify-center">
-              
-               {/* DECORATIVE CIRCLE (Background) - UPDATED POSITIONS */}
+              {/* Decorative Circle */}
               <div 
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[450px] md:h-[450px] rounded-full -z-10"
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] h-[280px] md:w-[450px] md:h-[450px] rounded-full -z-10"
                 style={{
                   background: 'linear-gradient(135deg, hsl(160, 30%, 45%), hsl(160, 30%, 35%))', 
-                  opacity: 0.8,
+                  opacity: 0.6, // Reduced opacity so it doesn't compete with text if they overlap
+                  filter: 'blur(20px)'
                 }}
               />
 
-              {/* HERO IMAGE (Foreground) */}
-              <div className="relative z-10 w-full max-w-[350px] md:max-w-[500px] lg:max-w-[650px]">
+              {/* Hero Image */}
+              <div className="relative z-10 w-full max-w-[300px] md:max-w-[500px] lg:max-w-[650px]">
                 <img 
                   src="hero.png" 
                   alt="App Preview" 
-                  className="w-full h-auto object-contain drop-shadow-2xl transform hover:scale-105 transition-transform duration-500"
+                  className="w-full h-auto object-contain drop-shadow-2xl"
                   style={{
-                     maskImage: 'linear-gradient(to bottom, black 90%, transparent 100%)',
-                     WebkitMaskImage: 'linear-gradient(to bottom, black 90%, transparent 100%)' 
+                     maskImage: 'linear-gradient(to bottom, black 85%, transparent 100%)',
+                     WebkitMaskImage: 'linear-gradient(to bottom, black 85%, transparent 100%)' 
                   }}
                 />
                 
-                {/* Floating Card Decoration */}
+                {/* Floating Card - Adjusted position for mobile safety */}
                 <div 
-                   className="absolute bottom-10 -left-6 md:-left-12 bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl shadow-xl animate-float"
+                   className="absolute bottom-6 -left-4 md:bottom-10 md:-left-12 bg-white/10 backdrop-blur-md border border-white/20 p-3 md:p-4 rounded-xl shadow-xl animate-float"
                    style={{ animationDelay: '1s' }}
                 >
                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center">
-                         <BarChart3 size={20} className="text-green-400" />
+                      <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-green-500/20 flex items-center justify-center">
+                         <BarChart3 size={18} className="text-green-400" />
                       </div>
                       <div>
-                         <p className="text-xs text-white/60">Monthly Savings</p>
-                         <p className="text-sm font-bold text-white">+₹12,450</p>
+                         <p className="text-[10px] md:text-xs text-white/80">Monthly Savings</p>
+                         <p className="text-xs md:text-sm font-bold text-white">+₹12,450</p>
                       </div>
                    </div>
                 </div>
               </div>
             </div>
-
           </div>
 
         </div>
