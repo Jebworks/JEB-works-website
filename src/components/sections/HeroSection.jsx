@@ -203,44 +203,49 @@ const HeroSection = ({ sectionRef, counter, scrollToSection }) => {
 
           {/* RIGHT COLUMN: Image Placeholder */}
           <div className="relative order-1 lg:order-2 flex justify-center lg:justify-end animate-on-scroll">
-             {/* DECORATIVE CIRCLE (Background) */}
-            <div 
-              className="absolute top-1/2 left-1/2 lg:left-auto lg:right-0 -translate-x-1/2 lg:translate-x-10 -translate-y-1/2 w-[300px] h-[300px] md:w-[450px] md:h-[450px] rounded-full -z-10"
-              style={{
-                background: 'linear-gradient(135deg, hsl(160, 30%, 45%), hsl(160, 30%, 35%))', 
-                opacity: 0.8,
-              }}
-            />
-
-            {/* HERO IMAGE (Foreground) */}
-            {/* FIX: Increased width constraints (max-w) for larger image size on desktop */}
-            <div className="relative z-10 w-full max-w-[350px] md:max-w-[500px] lg:max-w-[250px]">
-              <img 
-                src="hero.png" 
-                alt="App Preview" 
-                className="w-full h-auto object-contain drop-shadow-2xl transform hover:scale-105 transition-transform duration-500"
+            
+            {/* UPDATED WRAPPER: Adds a centered flex container for image and background */}
+            <div className="relative flex items-center justify-center">
+              
+               {/* DECORATIVE CIRCLE (Background) - UPDATED POSITIONS */}
+              <div 
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[450px] md:h-[450px] rounded-full -z-10"
                 style={{
-                   maskImage: 'linear-gradient(to bottom, black 90%, transparent 100%)',
-                   WebkitMaskImage: 'linear-gradient(to bottom, black 90%, transparent 100%)' 
+                  background: 'linear-gradient(135deg, hsl(160, 30%, 45%), hsl(160, 30%, 35%))', 
+                  opacity: 0.8,
                 }}
               />
-              
-              {/* Floating Card Decoration */}
-              <div 
-                 className="absolute bottom-10 -left-6 md:-left-12 bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl shadow-xl animate-float"
-                 style={{ animationDelay: '1s' }}
-              >
-                 <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center">
-                       <BarChart3 size={20} className="text-green-400" />
-                    </div>
-                    <div>
-                       <p className="text-xs text-white/60">Monthly Savings</p>
-                       <p className="text-sm font-bold text-white">+₹12,450</p>
-                    </div>
-                 </div>
+
+              {/* HERO IMAGE (Foreground) */}
+              <div className="relative z-10 w-full max-w-[350px] md:max-w-[500px] lg:max-w-[650px]">
+                <img 
+                  src="hero.png" 
+                  alt="App Preview" 
+                  className="w-full h-auto object-contain drop-shadow-2xl transform hover:scale-105 transition-transform duration-500"
+                  style={{
+                     maskImage: 'linear-gradient(to bottom, black 90%, transparent 100%)',
+                     WebkitMaskImage: 'linear-gradient(to bottom, black 90%, transparent 100%)' 
+                  }}
+                />
+                
+                {/* Floating Card Decoration */}
+                <div 
+                   className="absolute bottom-10 -left-6 md:-left-12 bg-white/10 backdrop-blur-md border border-white/20 p-4 rounded-xl shadow-xl animate-float"
+                   style={{ animationDelay: '1s' }}
+                >
+                   <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center">
+                         <BarChart3 size={20} className="text-green-400" />
+                      </div>
+                      <div>
+                         <p className="text-xs text-white/60">Monthly Savings</p>
+                         <p className="text-sm font-bold text-white">+₹12,450</p>
+                      </div>
+                   </div>
+                </div>
               </div>
             </div>
+
           </div>
 
         </div>
