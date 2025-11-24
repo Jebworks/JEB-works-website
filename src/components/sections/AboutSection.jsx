@@ -3,7 +3,7 @@ import { Users, Award, Heart } from 'lucide-react';
 
 /**
  * About Us Section - Adapted to 'Start Journey' Background
- * Layout: Image Left (Full Size, No Card Background) | Content Right (Glass Card)
+ * Layout: Image Left (Full Size, Blended) | Content Right (Glass Card)
  * Theme: Light Mode (bg-background)
  */
 const AboutSection = ({ sectionRef }) => {
@@ -65,17 +65,15 @@ const AboutSection = ({ sectionRef }) => {
           
           {/* === LEFT COLUMN: Image Section === */}
           <div className="animate-on-scroll w-full flex justify-center">
-            {/* UPDATED IMAGE CONTAINER: 
-                - Removed shadows, borders, and rounded-3xl clipping.
-                - Increased height to 700px.
-                - Set width to full.
-            */}
-            <div className="relative w-full h-[700px] flex items-center justify-center group">
-              {/* Image */}
+            <div
+              // Increased height to 700px and removed overflow/shadow/rounding for a free-standing look
+              className="relative w-full h-[700px] flex items-center justify-center group"
+            >
               <img
-                src="about2.png"
+                src="about.png"
                 alt="Jeb Works Team"
-                // Added mix-blend-multiply to help remove white background visually if present
+                // Added mix-blend-multiply to remove white background visually
+                // Used object-contain to show full image without cropping
                 className="w-full h-full object-contain object-center transition-transform duration-700 group-hover:scale-105 mix-blend-multiply"
               />
             </div>
