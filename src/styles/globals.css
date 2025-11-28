@@ -1,0 +1,598 @@
+@import url('https://fonts.cdnfonts.com/css/satoshi');
+@import url('https://fonts.cdnfonts.com/css/geist-mono');
+
+/*
+ * --- 2. TAILWIND DIRECTIVES ---
+ */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * --- 3. DESIGN TOKENS (CSS VARIABLES) ---
+ * NEW "Clay Terracotta" Theme
+ */
+:root {
+  --font-sans: 'Satoshi', system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+    'Noto Color Emoji';
+  --font-mono: 'Geist Mono', 'JetBrains Mono', 'Fira Code', 'Courier New',
+    monospace;
+
+  /*
+   * -- New Theme HSL Variables (from user) --
+   */
+  /* Primary brand color: Clay Terracotta */
+  --primary-h: 18;
+  --primary-s: 60%;
+  --primary-l: 45%;
+  /* Secondary: Saffron/Mustard */
+  --secondary-h: 42;
+  --secondary-s: 55%;
+  --secondary-l: 55%;
+  /* Accent: Sage Green */
+  --accent-h: 160;
+  --accent-s: 30%;
+  --accent-l: 38%;
+  /* Background: Sand/Cream */
+  --background-h: 36;
+  --background-s: 33%;
+  --background-l: 96%;
+  /* Surface: Off-white */
+  --surface-h: 36;
+  --surface-s: 33%;
+  --surface-l: 99%;
+  /* Text: Warm Charcoal */
+  --text-h: 24;
+  --text-s: 15%;
+  --text-l: 18%;
+  /* Border: Soft Taupe */
+  --border-h: 36;
+  --border-s: 15%;
+  --border-l: 80%;
+
+  /*
+   * -- Mapped shadcn-style Tokens (Light Mode) --
+   */
+  --background: hsl(var(--background-h), var(--background-s), var(--background-l));
+  --foreground: hsl(var(--text-h), var(--text-s), var(--text-l));
+
+  --muted: hsl(var(--background-h), var(--background-s), 93%);
+  --muted-foreground: hsl(var(--text-h), 10%, 45%);
+
+  --popover: hsl(var(--surface-h), var(--surface-s), var(--surface-l));
+  --popover-foreground: hsl(var(--text-h), var(--text-s), var(--text-l));
+
+  --card: hsl(var(--surface-h), var(--surface-s), var(--surface-l));
+  --card-foreground: hsl(var(--text-h), var(--text-s), var(--text-l));
+
+  --border: hsl(var(--border-h), var(--border-s), var(--border-l));
+  --input: hsl(var(--border-h), var(--border-s), var(--border-l));
+
+  --primary: hsl(var(--primary-h), var(--primary-s), var(--primary-l));
+  --primary-foreground: hsl(var(--background-h), var(--background-s), 98%);
+
+  --secondary: hsl(var(--secondary-h), var(--secondary-s), var(--secondary-l));
+  --secondary-foreground: hsl(var(--text-h), var(--text-s), 10%); /* Dark text on Saffron */
+
+  --accent: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
+  --accent-foreground: hsl(var(--background-h), var(--background-s), 98%); /* Light text on Sage */
+
+  --destructive: hsl(0, 40%, 55%); /* From user's --category-health */
+  --destructive-foreground: hsl(var(--background-h), var(--background-s), 98%);
+
+  --ring: hsl(var(--primary-h), var(--primary-s), var(--primary-l));
+
+  /*
+   * -- System Properties --
+   */
+  --radius: 0.75rem; /* 12px. Modern, soft radius. */
+  --radius-sm: 0.5rem; /* 8px */
+  --radius-lg: 1rem; /* 16px */
+
+  /*
+   * -- Premium Gradients (from user) --
+   */
+  --gradient-1: hsl(18, 60%, 45%);
+  --gradient-2: hsl(42, 55%, 55%);
+  --gradient-primary: linear-gradient(90deg, var(--gradient-1), var(--gradient-2));
+
+  --gradient-background: linear-gradient(
+    180deg,
+    hsl(var(--background)) 0%,
+    hsl(var(--background-h), var(--background-s), 93%) 100% /* Fades to muted */
+  );
+  --gradient-border-glow: linear-gradient(
+    135deg,
+    hsl(var(--primary-h), var(--primary-s), var(--primary-l) / 0.4) 0%,
+    hsl(var(--primary-h), var(--primary-s), var(--primary-l) / 0.1) 50%,
+    hsl(var(--primary-h), var(--primary-s), var(--primary-l) / 0.4) 100%
+  );
+  --gradient-text: var(--gradient-primary); /* Use main gradient for text */
+
+  /*
+   * -- Category Colors (from user) --
+   */
+  --category-food: hsl(90, 25%, 45%);
+  --category-transport: hsl(27, 70%, 55%);
+  --category-utilities: hsl(200, 30%, 60%);
+  --category-entertainment: hsl(340, 40%, 60%);
+  --category-health: hsl(0, 40%, 55%);
+  --category-savings: hsl(160, 30%, 38%);
+  --category-misc: hsl(36, 15%, 80%);
+}
+
+/*
+ * -- Dark Mode Tokens (from user) --
+ */
+.dark {
+  /* User's HSL variables for dark mode */
+  --primary-l: 60%;
+  --secondary-l: 65%;
+  --accent-l: 48%;
+  --background-h: 24;
+  --background-s: 15%;
+  --background-l: 10%;
+  --surface-h: 24;
+  --surface-s: 15%;
+  --surface-l: 15%;
+  --text-h: 36;
+  --text-s: 33%;
+  --text-l: 96%;
+  --border-h: 36; /* User used 36 for border-h, but not defined, using background-h */
+  --border-s: 15%;
+  --border-l: 30%;
+
+  /*
+   * -- Mapped shadcn-style Tokens (Dark Mode) --
+   */
+  --background: hsl(var(--background-h), var(--background-s), var(--background-l));
+  --foreground: hsl(var(--text-h), var(--text-s), var(--text-l));
+
+  --muted: hsl(var(--surface-h), var(--surface-s), var(--surface-l));
+  --muted-foreground: hsl(var(--text-h), 20%, 65%);
+
+  --popover: hsl(var(--background-h), var(--background-s), var(--background-l));
+  --popover-foreground: hsl(var(--text-h), var(--text-s), var(--text-l));
+
+  --card: hsl(var(--surface-h), var(--surface-s), var(--surface-l));
+  --card-foreground: hsl(var(--text-h), var(--text-s), var(--text-l));
+
+  --border: hsl(var(--border-h), var(--border-s), var(--border-l));
+  --input: hsl(var(--border-h), var(--border-s), var(--border-l));
+
+  --primary: hsl(var(--primary-h), var(--primary-s), var(--primary-l));
+  --primary-foreground: hsl(var(--background-h), var(--background-s), 10%); /* Dark text on light terracotta */
+
+  --secondary: hsl(var(--secondary-h), var(--secondary-s), var(--secondary-l));
+  --secondary-foreground: hsl(var(--background-h), var(--background-s), 10%); /* Dark text on light saffron */
+
+  --accent: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
+  --accent-foreground: hsl(var(--text-h), var(--text-s), var(--text-l)); /* Light text on dark sage */
+
+  --destructive: hsl(0, 50%, 65%);
+  --destructive-foreground: hsl(var(--text-h), var(--text-s), var(--text-l));
+
+  --ring: hsl(var(--primary-h), var(--primary-s), var(--primary-l));
+
+  /*
+   * -- Premium Gradients (Dark) --
+   */
+  --gradient-1: hsl(18, 60%, 60%);
+  --gradient-2: hsl(42, 55%, 65%);
+  --gradient-primary: linear-gradient(90deg, var(--gradient-1), var(--gradient-2));
+
+  --gradient-background: linear-gradient(
+    180deg,
+    hsl(var(--background)) 0%,
+    hsl(var(--surface-h), var(--surface-s), 12%) 100% /* Fades to surface */
+  );
+  --gradient-border-glow: linear-gradient(
+    135deg,
+    hsl(var(--primary-h), var(--primary-s), var(--primary-l) / 0.3) 0%,
+    hsl(var(--primary-h), var(--primary-s), var(--primary-l) / 0.05) 50%,
+    hsl(var(--primary-h), var(--primary-s), var(--primary-l) / 0.3) 100%
+  );
+}
+
+/*
+ * --- 4. BASE STYLES ---
+ * Applying tokens to base elements.
+ * We inject these into Tailwind's `base` layer.
+ */
+@layer base {
+  /*
+   * -- Smooth Scrolling Offset --
+   * Ensures content isn't hidden behind fixed navbar on click.
+   */
+  html {
+    scroll-padding-top: 5rem; /* Matches fixed navbar height */
+  }
+
+  /*
+   * -- Base Reset & Layout --
+   */
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    border-color: hsl(var(--border));
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: var(--font-sans);
+    min-height: 100vh;
+    /* Prevent content from going under fixed navbar */
+    padding-top: 5rem; 
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  /*
+   * -- Modern Typography Scale --
+   * Uses text-balance for cleaner headlines.
+   */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /*
+   * -- Accessible Focus Ring --
+   */
+  :focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+  }
+
+  /*
+   * -- Scrollbar Styling (Subtle) --
+   */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--muted));
+  }
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--muted-foreground) / 0.5);
+    border-radius: 10px;
+    transition: background 0.2s ease-in-out;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--muted-foreground) / 0.7);
+  }
+}
+
+/*
+ * --- 5. KEYFRAME ANIMATIONS ---
+ * Modern, smooth animations.
+ */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-12px) rotate(1.5deg);
+  }
+  66% {
+    transform: translateY(-6px) rotate(-1.5deg);
+  }
+}
+
+@keyframes pulse-subtle {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.02);
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 15px hsl(var(--primary) / 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px hsl(var(--primary) / 0.6);
+  }
+}
+
+@keyframes typewriter {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes accordion-down {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
+}
+
+@keyframes dialog-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -48%) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes dialog-out {
+  from {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translate(-50%, -48%) scale(0.96);
+  }
+}
+
+@keyframes spotlight {
+  0% {
+    opacity: 0;
+    transform: translate(-72%, -62%) scale(0.5);
+  }
+  100% {
+    opacity: 0.15;
+    transform: translate(-50%, -40%) scale(1);
+  }
+}
+
+/*
+ * --- 6. CUSTOM UTILITY CLASSES ---
+ * Reusable, opinionated utilities.
+ * We inject these into Tailwind's `utilities` layer.
+ */
+@layer utilities {
+  /*
+   * -- Typography --
+   */
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+  .text-gradient-primary {
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /*
+   * -- Effects & Backgrounds --
+   */
+  .glass-effect {
+    background: hsl(var(--background) / 0.5);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid hsl(var(--border) / 0.5);
+  }
+
+  .premium-background-gradient {
+    background-image: var(--gradient-background);
+  }
+
+  /*
+   * -- Transitions & Hover Effects --
+   */
+  .transition-all-fast {
+    transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .transition-all-std {
+    transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .hover-lift {
+    transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.05),
+      0 4px 6px -4px rgb(0 0 0 / 0.05);
+  }
+
+  .hover-lift-lg {
+    transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .hover-lift-lg:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.05),
+      0 8px 10px -6px rgb(0 0 0 / 0.05);
+  }
+
+  /*
+   * -- Card Shine / Hover Effect --
+   * (From user's file, refined)
+   */
+  .card-shine {
+    position: relative;
+    overflow: hidden;
+  }
+  .card-shine::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 75%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      hsl(var(--foreground) / 0.05),
+      transparent
+    );
+    transition: left 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .card-shine:hover::before {
+    left: 150%;
+  }
+
+  /*
+   * -- Gradient Border --
+   * (From user's file, refined)
+   */
+  .gradient-border {
+    position: relative;
+    background: hsl(var(--card));
+    border-radius: var(--radius-lg);
+  }
+  .gradient-border::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+    background: var(--gradient-border-glow);
+    border-radius: var(--radius-lg); /* Match parent radius */
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .gradient-border:hover::before {
+    opacity: 1;
+  }
+
+  /*
+   * -- Animation Utilities (from user) --
+   * Kept for compatibility.
+   */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  .animate-pulse-subtle {
+    animation: pulse-subtle 3s ease-in-out infinite;
+  }
+  .animate-slide-up {
+    animation: fade-in-up 0.8s ease-out forwards;
+  }
+  .animate-pulse-glow {
+    animation: pulse-glow 2.5s ease-in-out infinite;
+  }
+  .animate-shimmer {
+    background: linear-gradient(
+      90deg,
+      transparent,
+      hsl(var(--foreground) / 0.1),
+      transparent
+    );
+    background-size: 1000px 100%;
+    animation: shimmer 3s infinite;
+  }
+  .animate-typewriter {
+    overflow: hidden;
+    border-right: 3px solid hsl(var(--primary));
+    white-space: nowrap;
+    animation: typewriter 3s steps(40) 1s both;
+  }
+
+  /*
+   * -- Scroll/View Animations (from user) --
+   * These classes are typically toggled by JS.
+   */
+  .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease-out;
+  }
+  .animate-on-scroll.animate-in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .stagger-animation > * {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease-out;
+  }
+  .stagger-animation.animate-in-view > * {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  /* Stagger delays. More can be added if needed. */
+  .stagger-animation.animate-in-view > *:nth-child(1) {
+    transition-delay: 0.1s;
+  }
+  .stagger-animation.animate-in-view > *:nth-child(2) {
+    transition-delay: 0.2s;
+  }
+  .stagger-animation.animate-in-view > *:nth-child(3) {
+    transition-delay: 0.3s;
+  }
+  .stagger-animation.animate-in-view > *:nth-child(4) {
+    transition-delay: 0.4s;
+  }
+  .stagger-animation.animate-in-view > *:nth-child(5) {
+    transition-delay: 0.5s;
+  }
+}
