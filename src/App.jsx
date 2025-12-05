@@ -118,8 +118,8 @@ const App = () => {
   return (
     <div
       style={{
-        backgroundColor: "var(--color-background)",
-        color: "var(--color-text-primary)",
+        backgroundColor: "hsl(var(--background-h), var(--background-s), var(--background-l))",
+        color: "hsl(var(--text-h), var(--text-s), var(--text-l))",
         minHeight: "100vh",
         overflowX: "hidden",
       }}
