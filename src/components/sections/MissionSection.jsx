@@ -5,7 +5,7 @@ import { Target, Rocket, ArrowRight } from 'lucide-react';
  * MissionSection Component with Premium Glass Morphism
  */
 const MissionSection = ({ sectionRef }) => {
-  const highlightColor = 'hsl(42, 100%, 45%)'; 
+  const highlightColor = '#1EB8A9'; 
 
   return (
     <section
@@ -26,17 +26,17 @@ const MissionSection = ({ sectionRef }) => {
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 md:mb-24 animate-on-scroll">
           <div 
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm font-semibold tracking-wide uppercase mb-6"
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm font-normal tracking-wide uppercase mb-6"
             style={{ 
-              backgroundColor: 'hsl(18, 60%, 20%)',
-              color: 'hsl(18, 100%, 80%)'
+              backgroundColor: 'hsl(174, 60%, 20%)',
+              color: 'hsl(174, 100%, 90%)'
             }}
           >
             <span className="w-2 h-2 rounded-full bg-current animate-pulse"></span>
             Our Purpose
           </div>
           
-          <h2 className="text-4xl md:text-5xl lg:text-5xl font-extrabold tracking-tight text-white mb-6 leading-tight">
+          <h2 className="text-4xl md:text-5xl lg:text-5xl font-extrabold tracking-tight text-white mb-4 leading-tight">
             Driven by <span className="text-gradient-primary">Innovation</span>, <br className="hidden md:block" />
             Focused on <span className="text-gradient-primary">Impact</span>
           </h2>
