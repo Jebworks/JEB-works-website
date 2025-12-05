@@ -22,18 +22,20 @@ const Navigation = ({
 
   return (
     <nav
-      className="fixed top-0 w-full z-50 bg-white border-b border-gray-200 shadow-sm"
+      className="w-full z-50 border-b shadow-sm"
       style={{
         fontFamily: 'var(--font-sans)',
-        height: '5rem', // Fixed height (h-20)
+        height: '5rem',
+        backgroundColor: 'hsl(var(--background-h), var(--background-s), var(--background-l))',
+        borderColor: 'hsl(var(--border-h), var(--border-s), var(--border-l))',
       }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
         <div className="flex items-center justify-between h-full">
           
-          {/* === Logo Section (Replaced with Image) === */}
+          {/* Logo Section */}
           <div 
-            className="flex-shrink-0 flex items-center cursor-pointer group"
+            className="flex-shrink-0 flex items-center gap-1 cursor-pointer group"
             onClick={() => scrollToSection('home')}
           >
             <img 
@@ -41,14 +43,21 @@ const Navigation = ({
               alt="Jeb Works Logo" 
               className="h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
             />
-            {/* Removed ml-2 to eliminate the gap */}
             <span className="text-2xl font-black tracking-tight">
-              <span className="text-gradient-primary">Jeb</span>
-              <span className="text-gray-900">Works</span>
+              <span 
+                style={{
+                  background: `linear-gradient(to right, hsl(var(--primary-h), var(--primary-s), var(--primary-l)), hsl(var(--secondary-h), var(--secondary-s), var(--secondary-l)))`,
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                }}
+              >
+                JEB  Works
+              </span>
             </span>
           </div>
 
-          {/* === Desktop Navigation === */}
+          {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-8 h-full">
             {navItems.map((item) => {
               const targetId = getSectionId(item);
@@ -58,21 +67,33 @@ const Navigation = ({
                 <button
                   key={item}
                   onClick={() => scrollToSection(targetId)}
-                  className={`relative h-full px-1 text-sm font-medium transition-colors duration-300 flex items-center ${
-                    isActive
-                      ? 'text-[hsl(18,60%,45%)] font-semibold' // Active Text Color (Clay)
-                      : 'text-gray-600 hover:text-gray-900'
-                  }`}
+                  className="relative h-full px-1 text-sm font-medium transition-colors duration-300 flex items-center"
+                  style={{
+                    color: isActive 
+                      ? `hsl(var(--primary-h), var(--primary-s), var(--primary-l))`
+                      : 'hsl(var(--muted-foreground-h), var(--muted-foreground-s), var(--muted-foreground-l))',
+                    fontWeight: isActive ? '600' : '500',
+                  }}
+                  onMouseEnter={(e) => {
+                    if (!isActive) {
+                      e.currentTarget.style.color = 'hsl(var(--foreground-h), var(--foreground-s), var(--foreground-l))';
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    if (!isActive) {
+                      e.currentTarget.style.color = 'hsl(var(--muted-foreground-h), var(--muted-foreground-s), var(--muted-foreground-l))';
+                    }
+                  }}
                 >
                   {item}
                   
-                  {/* === The Primary Color Underline === */}
+                  {/* Active Underline */}
                   {isActive && (
                     <span
                       className="absolute bottom-7 left-0 w-full h-[3px] rounded-t-full"
                       style={{
-                        background: 'hsl(18, 60%, 45%)', // Solid Primary Color
-                        boxShadow: '0 -2px 10px hsl(18 60% 45% / 0.3)', // Subtle glow upwards
+                        background: `hsl(var(--primary-h), var(--primary-s), var(--primary-l))`,
+                        boxShadow: `0 -2px 10px hsl(var(--primary-h), var(--primary-s), var(--primary-l) / 0.3)`,
                         transition: 'all 0.3s ease-in-out',
                       }}
                     />
@@ -82,25 +103,45 @@ const Navigation = ({
             })}
           </div>
 
-          {/* === Desktop CTA & Mobile Toggle === */}
+          {/* Desktop CTA */}
           <div className="hidden lg:flex items-center gap-4">
             <button
               onClick={() => { /* Handle Get Started */ }}
-              className="px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg text-white"
+              className="px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300"
               style={{
-                background: 'hsl(18, 60%, 45%)', // Solid Primary Color
-                color: 'hsl(36, 33%, 98%)',
+                background: `linear-gradient(135deg, hsl(var(--primary-h), var(--primary-s), var(--primary-l)), hsl(var(--secondary-h), var(--secondary-s), var(--secondary-l)))`,
+                color: 'white',
+                boxShadow: `0 4px 15px hsl(var(--primary-h), var(--primary-s), var(--primary-l) / 0.3)`,
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-2px)';
+                e.currentTarget.style.boxShadow = `0 6px 20px hsl(var(--primary-h), var(--primary-s), var(--primary-l) / 0.4)`;
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = `0 4px 15px hsl(var(--primary-h), var(--primary-s), var(--primary-l) / 0.3)`;
               }}
             >
               Coming Soon
             </button>
           </div>
 
-          {/* === Mobile Menu Button === */}
+          {/* Mobile Menu Button */}
           <div className="flex items-center lg:hidden">
             <button
-              className="inline-flex items-center justify-center p-2 rounded-[var(--radius-sm)] focus:outline-none text-gray-600 hover:text-gray-900 hover:bg-gray-100 transition-colors duration-300"
+              className="inline-flex items-center justify-center p-2 rounded-lg focus:outline-none transition-colors duration-300"
+              style={{
+                color: 'hsl(var(--muted-foreground-h), var(--muted-foreground-s), var(--muted-foreground-l))',
+              }}
               onClick={() => setIsMenuOpen(!isMenuOpen)}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.color = 'hsl(var(--foreground-h), var(--foreground-s), var(--foreground-l))';
+                e.currentTarget.style.backgroundColor = 'hsl(var(--muted-h), var(--muted-s), var(--muted-l))';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.color = 'hsl(var(--muted-foreground-h), var(--muted-foreground-s), var(--muted-foreground-l))';
+                e.currentTarget.style.backgroundColor = 'transparent';
+              }}
               aria-expanded={isMenuOpen}
               aria-controls="mobile-menu"
             >
@@ -115,12 +156,30 @@ const Navigation = ({
         </div>
       </div>
 
-      {/* === Mobile Menu Panel === */}
+      {/* Mobile Menu Panel */}
       {isMenuOpen && (
         <div
-          className="lg:hidden animate-slide-up px-2 pb-6 pt-2 sm:px-3 border-t border-gray-200 bg-white shadow-lg"
+          className="lg:hidden px-2 pb-6 pt-2 sm:px-3 border-t shadow-lg"
+          style={{
+            backgroundColor: 'hsl(var(--background-h), var(--background-s), var(--background-l))',
+            borderColor: 'hsl(var(--border-h), var(--border-s), var(--border-l))',
+            animation: 'fadeIn 0.2s ease-out',
+          }}
           id="mobile-menu"
         >
+          <style>{`
+            @keyframes fadeIn {
+              from {
+                opacity: 0;
+                transform: translateY(-10px);
+              }
+              to {
+                opacity: 1;
+                transform: translateY(0);
+              }
+            }
+          `}</style>
+          
           <div className="p-4 space-y-1">
             {navItems.map((item) => {
               const targetId = getSectionId(item);
@@ -133,11 +192,28 @@ const Navigation = ({
                     scrollToSection(targetId);
                     setIsMenuOpen(false);
                   }}
-                  className={`block w-full text-left py-3 px-4 rounded-[var(--radius-sm)] transition-colors-fast flex items-center justify-between text-base font-medium ${
-                    isActive
-                      ? 'bg-primary/10 text-[hsl(18,60%,45%)] font-semibold' // Active Mobile Style
-                      : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'
-                  }`}
+                  className="block w-full text-left py-3 px-4 rounded-lg transition-all duration-200 flex items-center justify-between text-base font-medium"
+                  style={{
+                    backgroundColor: isActive 
+                      ? `hsl(var(--primary-h), var(--primary-s), var(--primary-l) / 0.1)`
+                      : 'transparent',
+                    color: isActive
+                      ? `hsl(var(--primary-h), var(--primary-s), var(--primary-l))`
+                      : 'hsl(var(--muted-foreground-h), var(--muted-foreground-s), var(--muted-foreground-l))',
+                    fontWeight: isActive ? '600' : '500',
+                  }}
+                  onMouseEnter={(e) => {
+                    if (!isActive) {
+                      e.currentTarget.style.backgroundColor = 'hsl(var(--muted-h), var(--muted-s), var(--muted-l))';
+                      e.currentTarget.style.color = 'hsl(var(--foreground-h), var(--foreground-s), var(--foreground-l))';
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    if (!isActive) {
+                      e.currentTarget.style.backgroundColor = 'transparent';
+                      e.currentTarget.style.color = 'hsl(var(--muted-foreground-h), var(--muted-foreground-s), var(--muted-foreground-l))';
+                    }
+                  }}
                 >
                   <span>{item}</span>
                   <ArrowRight size={16} />
@@ -145,13 +221,14 @@ const Navigation = ({
               );
             })}
 
-            <div className="pt-4 mt-4 border-t border-gray-200">
+            <div className="pt-4 mt-4 border-t" style={{ borderColor: 'hsl(var(--border-h), var(--border-s), var(--border-l))' }}>
               <button
                 onClick={() => { /* Handle Get Started */ }}
-                className="w-full text-center py-3 px-4 rounded-[var(--radius)] font-semibold transition-all-std hover-lift text-white"
+                className="w-full text-center py-3 px-4 rounded-lg font-semibold transition-all duration-300"
                 style={{
-                  background: 'hsl(18, 60%, 45%)', // Solid Primary Color
-                  color: 'hsl(36, 33%, 98%)',
+                  background: `linear-gradient(135deg, hsl(var(--primary-h), var(--primary-s), var(--primary-l)), hsl(var(--secondary-h), var(--secondary-s), var(--secondary-l)))`,
+                  color: 'white',
+                  boxShadow: `0 4px 15px hsl(var(--primary-h), var(--primary-s), var(--primary-l) / 0.3)`,
                 }}
               >
                 Coming Soon
