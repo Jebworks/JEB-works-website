@@ -163,7 +163,7 @@ const MobileScreens = () => {
               style={{ color: 'hsl(var(--background-h), var(--background-s), 12%)' }}
             >
               Powerful Features in{' '} <br />
-              <span style={{ color: 'hsl(var(--primary-h), var(--primary-s), var(--primary-l))' }}>
+              <span className="text-gradient-primary">
                 Your Pocket
               </span> 
             </h2>
