@@ -122,7 +122,6 @@ const MobileScreens = () => {
       id="mobile"
       className="relative py-6 md:py-8 overflow-hidden"
       style={{ 
-        fontFamily: 'Inter, sans-serif',
         background: 'linear-gradient(135deg, hsl(var(--primary-h), var(--primary-s), 98%) 0%, hsl(var(--secondary-h), var(--secondary-s), 96%) 100%)',
       }}
     >
