@@ -5,7 +5,7 @@ import { Link, DatabaseZap, PieChart, Calculator, ArrowRight } from 'lucide-reac
  * HowItWorksSection Component with Premium Glass Morphism
  */
 const HowItWorksSection = ({ sectionRef }) => {
-  const highlightColor = 'hsl(42, 90%, 70%)';
+  const highlightColor = 'hsl(174, 90%, 70%)';
 
   const steps = [
     {
@@ -50,8 +50,8 @@ const HowItWorksSection = ({ sectionRef }) => {
           <div
             className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm font-semibold tracking-wide uppercase mb-6"
             style={{
-              backgroundColor: 'hsl(18, 60%, 20%)',
-              color: 'hsl(18, 100%, 80%)',
+              backgroundColor: 'hsl(174, 60%, 20%)',
+              color: 'hsl(174, 100%, 80%)',
             }}
           >
             <DatabaseZap size={14} className="animate-pulse" />
