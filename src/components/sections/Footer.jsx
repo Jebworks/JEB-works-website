@@ -51,7 +51,7 @@ const Footer = () => {
                 alt="Jeb Works Logo" 
                 className="h-10 w-auto object-contain" 
               />
-              <span className="text-3xl font-bold">
+              <span className="text-2xl font-extrabold">
                 <span className="bg-gradient-to-r from-[#1EB8A9] font-bold to-[#073F3A] bg-clip-text text-transparent">JEB Works</span>
               </span>
             </div>
