@@ -36,7 +36,7 @@ const MissionSection = ({ sectionRef }) => {
             Our Purpose
           </div>
           
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-6 leading-tight">
+          <h2 className="text-4xl md:text-5xl lg:text-5xl font-extrabold tracking-tight text-white mb-6 leading-tight">
             Driven by <span className="text-gradient-primary">Innovation</span>, <br className="hidden md:block" />
             Focused on <span className="text-gradient-primary">Impact</span>
           </h2>
