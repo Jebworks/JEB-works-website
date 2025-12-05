@@ -130,7 +130,7 @@ const StartJourneySection = ({ sectionRef, scrollToSection }) => {
             <div className="relative z-10 flex items-center gap-6">
               <AppStoreIcon />
               <div className="text-left flex-1">
-                <p className="text-sm font-normal opacity-90" style={{ color: 'white' }}>Available on</p>
+                <p className="text-sm font-normal opacity-90" style={{ color: 'white' }}>Comming Soon</p>
                 <p className="text-lg md:text-2xl font-black" style={{ color: 'white' }}>App Store</p>
                 {/* <p className="text-sm mt-1 opacity-80" style={{ color: 'white' }}>iPhone, iPad & More</p> */}
               </div>
@@ -162,7 +162,7 @@ const StartJourneySection = ({ sectionRef, scrollToSection }) => {
             <div className="relative z-10 flex items-center gap-6">
               <GooglePlayIcon />
               <div className="text-left flex-1">
-                <p className="text-sm font-normal opacity-90" style={{ color: 'white' }}>Available on</p>
+                <p className="text-sm font-normal opacity-90" style={{ color: 'white' }}>Comming Soon</p>
                 <p className="text-xl md:text-2xl font-black" style={{ color: 'white' }}>Google Play</p>
                 {/* <p className="text-sm mt-1 opacity-80" style={{ color: 'white' }}>Android & More</p> */}
               </div>
