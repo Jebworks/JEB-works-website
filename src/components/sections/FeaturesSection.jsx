@@ -333,7 +333,7 @@ const FeaturesSection = ({ sectionRef }) => {
                 </div>
 
                 {/* Get Started Button (Desktop only) */}
-                <div className="hidden lg:flex justify-center mt-8">
+                {/* <div className="hidden lg:flex justify-center mt-8">
                   <button
                     className="px-12 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
                     style={{
@@ -347,7 +347,7 @@ const FeaturesSection = ({ sectionRef }) => {
                       <ChevronRight size={20} />
                     </span>
                   </button>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
