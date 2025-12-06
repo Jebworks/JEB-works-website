@@ -152,7 +152,7 @@ const FeaturesSection = ({ sectionRef }) => {
             </div>
 
             {/* Get Started Button (Mobile only) */}
-            <div className="lg:hidden mt-8">
+            {/* <div className="lg:hidden mt-8">
               <button
                 className="w-full py-4 px-6 rounded-xl font-semibold text-lg transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
                 style={{
@@ -166,7 +166,7 @@ const FeaturesSection = ({ sectionRef }) => {
                   <ChevronRight size={20} />
                 </span>
               </button>
-            </div>
+            </div> */}
           </div>
 
           {/* === Right Column: Feature Details (Larger) === */}
