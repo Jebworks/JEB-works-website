@@ -86,9 +86,19 @@ const AboutSection = ({ sectionRef }) => {
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </div>
 
-              {/* Floating Badge - Top Right */}
+               {/* Floating Badge - Top Right */}
               <div 
-                className="absolute top-20 -right-10 px-6 py-4 rounded-2xl backdrop-blur-md group-hover:shadow-2xl transition-all"
+                className="
+                  absolute 
+                  right-10        /* mobile */
+                  md:-right-10    /* tablet & desktop */
+                  top-20 
+                  px-6 py-4 
+                  rounded-2xl 
+                  backdrop-blur-md 
+                  group-hover:shadow-2xl 
+                  transition-all
+                "
                 style={{
                   background: "linear-gradient(135deg, #1EB8A9 0%, #073F3A 100%)",
                   border: "1px solid rgba(255, 255, 255, 0.2)",
@@ -102,11 +112,22 @@ const AboutSection = ({ sectionRef }) => {
                 </div>
               </div>
 
+
               {/* Floating Badge - Bottom Left */}
               <div 
-                className="absolute -bottom-8 -left-10 px-6 py-4 rounded-2xl backdrop-blur-md transition-all"
+                className="
+                  absolute 
+                  left-10          /* mobile */
+                  md:-left-10      /* from md and above */
+                  md:-bottom-10
+                  -bottom-0
+                  px-6 py-4 
+                  rounded-2xl 
+                  backdrop-blur-md 
+                  transition-all
+                "
                 style={{
-                  background: "linear-gradient(135deg, #1EB8A9 0%, #073F3A",
+                  background: "linear-gradient(135deg, #1EB8A9 0%, #073F3A)",
                   border: "1px solid rgba(255, 255, 255, 0.2)",
                   animation: "floatLeft 5s ease-in-out infinite",
                   boxShadow: "0 15px 40px rgba(12, 182, 194, 0.3)"
