@@ -140,7 +140,7 @@ const HeroSection = ({ sectionRef }) => {
               <span
                 className="inline-block"
                 style={{
-                  background: 'linear-gradient(to right, #1EB8A9, #073F3A)',
+                  background: 'linear-gradient(to right, #1EB8A9, #439891ff)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                   backgroundClip: 'text',
